@@ -1,4 +1,3 @@
-# __manifest__.py
 # -*- coding: utf-8 -*-
 {
     'name': "Dental Care",
@@ -8,13 +7,19 @@
     'website': "https://https://odoo.narloci.my.id/",
     'category': 'Uncategorized',
     'version': '0.1',
-    'depends': ['base', 'dental'],
+    'depends': ['base'],
     'data': [
-        'views/services_view.xml',
-        'views/doctors_view.xml',
-        'views/patients_view.xml',
-        'views/appointments_view.xml',
+        # 'views/services_view.xml',
+        # 'views/doctors_view.xml',
+        # 'views/patients_view.xml',
+        # 'views/appointments_view.xml',
+        'views/views.xml',
+        'security/ir.model.access.csv'
     ],
     'installable': True,
     'application': True,
+
+    'demo':[
+        'demo/demo.xml'
+    ]
 }
