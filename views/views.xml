@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="dental__care.list">
+      <field name="name">Dental_Care list</field>
+      <field name="model">dental__care.dental__care</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="dental__care.action_window">
+      <field name="name">Dental_Care window</field>
+      <field name="res_model">dental__care.dental__care</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="dental__care.action_server">
+      <field name="name">Dental_Care server</field>
+      <field name="model_id" ref="model_dental__care_dental__care"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="Dental_Care" id="dental__care.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="dental__care.menu_1" parent="dental__care.menu_root"/>
+    <menuitem name="Menu 2" id="dental__care.menu_2" parent="dental__care.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="dental__care.menu_1_list" parent="dental__care.menu_1"
+              action="dental__care.action_window"/>
+    <menuitem name="Server to list" id="dental__care" parent="dental__care.menu_2"
+              action="dental__care.action_server"/>
+-->
+  </data>
+</odoo>

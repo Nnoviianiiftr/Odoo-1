@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="dental_patient_form">
+            <field name="name">dental.patient.form</field>
+            <field name="model">dental.patient</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="patient"/>
+                        <field name="doctor"/>
+                        <field name="service"/>
+                        <field name="emergency_number"/>
+                        <field name="date_of_birth"/>
+                        <field name="blood_type"/>
+                        <field name="height"/>
+                        <field name="weight"/>
+                        <field name="is_vaccinated"/>
+                        <field name="vaccine_name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

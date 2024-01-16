@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="dental_service_form">
+            <field name="name">dental.service.form</field>
+            <field name="model">dental.service</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="floor"/>
+                        <field name="room"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
