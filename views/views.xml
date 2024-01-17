@@ -2,23 +2,29 @@
   <data>
     <!-- explicit list view definition -->
 
-    <record model="ir.ui.view" id="dental__care.list">
-      <field name="name">Dental_Care list</field>
-      <field name="model">dental.doctor</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="doctor"/>
-          <field name="service_id"/>
-        </tree>
-      </field>
-    </record>
-
-
     <!-- actions opening views on models -->
 
-    <record model="ir.actions.act_window" id="dental__care.action_window">
-      <field name="name">Dental_Care window</field>
+    <record model="ir.actions.act_window" id="dental__care.action_window_doctor">
+      <field name="name">Dental Care Doctor</field>
       <field name="res_model">dental.doctor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="dental__care.action_window_appointment">
+      <field name="name">Dental Care Appointment</field>
+      <field name="res_model">dental.appointment</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="dental__care.action_window_patient">
+      <field name="name">Dental Care Patient</field>
+      <field name="res_model">dental.patient</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="dental__care.action_window_service">
+      <field name="name">Dental Care Service</field>
+      <field name="res_model">dental.service</field>
       <field name="view_mode">tree,form</field>
     </record>
 
@@ -41,12 +47,15 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="Dental_Care" id="dental__care.menu_root"/>
+    <menuitem name="Dental_Care" id="dental__care.menu_root" web_icon="dental__care,static/description/icon.png"/>
 
     <!-- menu categories -->
 
-    <menuitem name="Dokter" id="dental__care.menu" parent="dental__care.menu_root" action="dental__care.action_window"/>
-    <!-- <menuitem name="Menu 2" id="dental__care.menu_2" parent="dental__care.menu_root"/> -->
+    <menuitem name="Dokter" id="dental__care.menu1" parent="dental__care.menu_root" action="dental__care.action_window_doctor"/>
+    <menuitem name="Appointment" id="dental__care.menu2" parent="dental__care.menu_root" action="dental__care.action_window_appointment"/>
+    <menuitem name="Patient" id="dental__care.menu3" parent="dental__care.menu_root" action="dental__care.action_window_patient"/>
+    <menuitem name="Service" id="dental__care.menu4" parent="dental__care.menu_root" action="dental__care.action_window_service"/>   
+     <!-- <menuitem name="Menu 2" id="dental__care.menu_2" parent="dental__care.menu_root"/> -->
 
     <!-- actions -->
 <!--

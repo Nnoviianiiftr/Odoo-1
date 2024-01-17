@@ -5,12 +5,29 @@
             <field name="model">dental.doctor</field>
             <field name="arch" type="xml">
                 <form>
-                    <group>
-                        <field name="doctor"/>
-                        <field name="service_id"/>
-                    </group>
+                    <sheet>
+                        <h1><field name="doctor"></field></h1>
+                        <group>
+                            <field name="doctor"/>
+                            <field name="service_id"/>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>
+
+        <!-- Explicit list view definition -->
+        <record model="ir.ui.view" id="dental__care.list_doctor">
+            <field name="name">Dental Care List</field>
+            <field name="model">dental.doctor</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="doctor"/>
+                    <field name="service_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <menuitem name="Dokter" id="dental__care.menu1" parent="dental__care.menu_root" action="dental__care.action_window_doctor"/>
     </data>
 </odoo>

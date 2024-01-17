@@ -5,20 +5,65 @@
             <field name="model">dental.patient</field>
             <field name="arch" type="xml">
                 <form>
+                <sheet>
+                <h1><field name="patient"></field></h1>
                     <group>
+                    <group string="PATIENT INFORMATION">
                         <field name="patient"/>
+                        <field name="emergency_number"/>
+                    </group>
+                    
+                    <group string="HOSPITAL INFORMATION">
                         <field name="doctor"/>
                         <field name="service"/>
-                        <field name="emergency_number"/>
-                        <field name="date_of_birth"/>
-                        <field name="blood_type"/>
-                        <field name="height"/>
-                        <field name="weight"/>
-                        <field name="is_vaccinated"/>
-                        <field name="vaccine_name"/>
+                    </group>  
                     </group>
+
+                    <notebook>
+                        <page name="Patient History">
+                            <group>
+                                <field name="date_of_birth"/>
+                                <field name="height"/>
+                                <field name="weight"/>
+                            </group>
+                            <group>
+                                <field name="blood_type" widget="radio"/>
+                            </group>
+                        </page>
+                        <page name="Medical History">
+                            <group>
+                            <group>
+                                <field name="is_vaccinated"/>
+                            </group>
+                            <group>
+                                <field name="vaccine_name"/>
+                            </group>
+                            </group>
+                        </page>
+                    </notebook>
+                    </sheet>
                 </form>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="dental__care.list_patient">
+            <field name="name">Dental Care List</field>
+            <field name="model">dental.patient</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="patient"/>
+                    <field name="doctor"/>
+                    <field name="service"/>
+                    <field name="emergency_number"/>
+                    <field name="date_of_birth"/>
+                    <field name="blood_type"/>
+                    <field name="height"/>
+                    <field name="weight"/>
+                    <field name="is_vaccinated"/>
+                    <field name="vaccine_name"/>
+                </tree>
+            </field>
+        </record>
+        <menuitem name="Patient" id="dental__care.menu3" parent="dental__care.menu_root" action="dental__care.action_window_patient"/>
     </data>
 </odoo>

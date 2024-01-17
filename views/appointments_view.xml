@@ -5,15 +5,40 @@
             <field name="model">dental.appointment</field>
             <field name="arch" type="xml">
                 <form>
-                    <group>
-                        <field name="patient"/>
+                    <sheet>
+                        <h1><field name="patient"></field></h1>
+                        <group>
+                            <field name="patient"/>
+                            <field name="doctor"/>
+                            <field name="service"/>
+                        </group>
+                        <notebook>
+                            <page string="Scheduling">
+                                <group>
+                                    <field name="date_start"/>
+                                    <field name="date_end"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="dental__care.list_appointment">
+            <field name="name">Dental Care list</field>
+                <field name="model">dental.appointment</field>
+                <field name="arch" type="xml">
+                    <tree>
+                     <field name="patient"/>
                         <field name="doctor"/>
                         <field name="service"/>
                         <field name="date_start"/>
                         <field name="date_end"/>
-                    </group>
-                </form>
+                    </tree>
             </field>
-        </record>
+            </record>
+
+        <menuitem name="Appointment" id="dental__care.menu2" parent="dental__care.menu_root" action="dental__care.action_window_appointment"/>
     </data>
 </odoo>

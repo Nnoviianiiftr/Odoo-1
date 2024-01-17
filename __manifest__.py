@@ -8,11 +8,12 @@
     'category': 'Uncategorized',
     'version': '0.1',
     'depends': ['base'],
+    'images': ['static/description/icon.png'],
     'data': [
-        # 'views/services_view.xml',
-        # 'views/doctors_view.xml',
-        # 'views/patients_view.xml',
-        # 'views/appointments_view.xml',
+        'views/services_view.xml',
+        'views/doctors_view.xml',
+        'views/patients_view.xml',
+        'views/appointments_view.xml',
         'views/views.xml',
         'security/ir.model.access.csv'
     ],
@@ -21,5 +22,6 @@
 
     'demo':[
         'demo/demo.xml'
-    ]
+    ],
+    'images': ['static/description/icon.png']
 }
