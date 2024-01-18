@@ -5,6 +5,7 @@ class DentalPatient(models.Model):
     _description = 'Dental Patient'
 
     patient = fields.Many2one('res.partner', string="Patient", required=True)
+    image = fields.Binary(string="image", attachment=True)
     doctor = fields.Many2one('res.partner', string="Doctor")
     service = fields.Many2one('dental.service', string="Service")
     emergency_number = fields.Char("Emergency Number", related='patient.phone')

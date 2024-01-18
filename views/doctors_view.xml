@@ -5,8 +5,9 @@
             <field name="model">dental.doctor</field>
             <field name="arch" type="xml">
                 <form>
-                    <sheet>
-                        <h1><field name="doctor"></field></h1>
+                    <sheet>   
+                   <field name="image" widget="image" class="oe_avatar"/>
+                    <h1><field name="doctor"/></h1>
                         <group>
                             <field name="doctor"/>
                             <field name="service_id"/>
@@ -25,6 +26,32 @@
                     <field name="doctor"/>
                     <field name="service_id"/>
                 </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="dental__care.kanban_doctor">
+            <field name="name">Dental Care Kanban</field>
+            <field name="model">dental.doctor</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <field name="image" widget="image" class="oe_avatar"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong class="oe_kanban_title">
+                                        <field name="doctor"/>
+                                    </strong>
+                                    <div class="oe_kanban_content">
+                                        <field name="service_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
             </field>
         </record>
 

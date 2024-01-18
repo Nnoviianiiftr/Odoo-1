@@ -6,21 +6,22 @@
             <field name="arch" type="xml">
                 <form>
                 <sheet>
-                <h1><field name="patient"></field></h1>
+                <field name="image" widget="image" class="oe_avatar"/>
+                <h1><field name="patient"/></h1>
                     <group>
                     <group string="PATIENT INFORMATION">
                         <field name="patient"/>
                         <field name="emergency_number"/>
                     </group>
-                    
                     <group string="HOSPITAL INFORMATION">
                         <field name="doctor"/>
                         <field name="service"/>
-                    </group>  
+                    </group> 
                     </group>
 
                     <notebook>
                         <page name="Patient History">
+                        <group>
                             <group>
                                 <field name="date_of_birth"/>
                                 <field name="height"/>
@@ -29,7 +30,9 @@
                             <group>
                                 <field name="blood_type" widget="radio"/>
                             </group>
+                        </group>
                         </page>
+
                         <page name="Medical History">
                             <group>
                             <group>
@@ -64,6 +67,36 @@
                 </tree>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="dental__care.kanban_patient">
+            <field name="name">Dental Care Kanban</field>
+            <field name="model">dental.patient</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box" weight="2">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image" weight="1">
+                                    <field name="image" widget="image" class="oe_avatar"/>
+                                </div>
+                                <div class="oe_kanban_details" weight="1" style="margin-left: 15px;">
+                                    <strong class="oe_kanban_title">
+                                        <field name="patient"/>
+                                    </strong>
+                                    <div class="oe_kanban_content">
+                                        <field name="doctor"/>
+                                    </div>
+                                    <div class="oe_kanban_content">
+                                        <field name="service"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
         <menuitem name="Patient" id="dental__care.menu3" parent="dental__care.menu_root" action="dental__care.action_window_patient"/>
     </data>
 </odoo>
