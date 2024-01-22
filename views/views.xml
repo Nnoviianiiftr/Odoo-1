@@ -4,45 +4,45 @@
 
     <!-- actions opening views on models -->
 
-    <record model="ir.actions.act_window" id="dental__care.action_window_doctor">
+    <!-- <record model="ir.actions.act_window" id="dental__care.action_window_doctor">
       <field name="name">Dental Care Doctor</field>
       <field name="res_model">dental.doctor</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,kanban</field>
     </record>
 
     <record model="ir.actions.act_window" id="dental__care.action_window_appointment">
       <field name="name">Dental Care Appointment</field>
       <field name="res_model">dental.appointment</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,kanban,calendar</field>
     </record>
 
     <record model="ir.actions.act_window" id="dental__care.action_window_patient">
       <field name="name">Dental Care Patient</field>
       <field name="res_model">dental.patient</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,kanban</field>
     </record>
 
     <record model="ir.actions.act_window" id="dental__care.action_window_service">
       <field name="name">Dental Care Service</field>
       <field name="res_model">dental.service</field>
-      <field name="view_mode">tree,form</field>
-    </record>
+      <field name="view_mode">tree,form,kanban</field>
+    </record> -->
 
 
     <!-- server action to the one above -->
 
-    <record model="ir.actions.server" id="dental__care.action_server">
+    <!-- <record model="ir.actions.server" id="dental__care.action_server">
       <field name="name">Dental_Care server</field>
       <field name="model_id" ref="model_dental_doctor"/>
       <field name="state">code</field>
       <field name="code">
         action = {
           "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
+          "view_mode": "tree,form,kanban",
           "res_model": model._name,
         }
       </field>
-    </record>
+    </record> -->
 
 
     <!-- Top menu item -->

@@ -45,6 +45,12 @@
             </field>
         </record>
 
+        <record model="ir.actions.act_window" id="dental__care.action_window_service">
+            <field name="name">Dental Care Service</field>
+            <field name="res_model">dental.service</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
         <menuitem name="Service" id="dental__care.menu4" parent="dental__care.menu_root" action="dental__care.action_window_service"/>
     </data>
 </odoo>

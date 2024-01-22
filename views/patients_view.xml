@@ -5,19 +5,25 @@
             <field name="model">dental.patient</field>
             <field name="arch" type="xml">
                 <form>
-                <sheet>
-                <field name="image" widget="image" class="oe_avatar"/>
-                <h1><field name="patient"/></h1>
-                    <group>
-                    <group string="PATIENT INFORMATION">
-                        <field name="patient"/>
-                        <field name="emergency_number"/>
-                    </group>
-                    <group string="HOSPITAL INFORMATION">
-                        <field name="doctor"/>
-                        <field name="service"/>
-                    </group> 
-                    </group>
+                <header>
+                    <button id="button_new" name="action_new" string="New" class="btn-primary" type="object"/>
+                    <button id="button_in_progress" name="action_in_progress" string="In Progress" class="btn-primary" type="object"/>
+                    <button id="button_done" name="action_done" string="Done" class="btn-primary" type="object"/>
+                    <field name="stage" widget="statusbar" statusbar_visible="new,in_progress,done"/>
+                </header>
+                    <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <h1><field name="patient"/></h1>
+                        <group>
+                        <group string="PATIENT INFORMATION">
+                            <field name="patient"/>
+                            <field name="emergency_number"/>
+                        </group>
+                        <group string="HOSPITAL INFORMATION">
+                            <field name="doctor"/>
+                            <field name="service"/>
+                        </group> 
+                        </group>
 
                     <notebook>
                         <page name="Patient History">
@@ -72,7 +78,7 @@
             <field name="name">Dental Care Kanban</field>
             <field name="model">dental.patient</field>
             <field name="arch" type="xml">
-                <kanban>
+                <kanban default_group_by="stage">
                     <templates>
                         <t t-name="kanban-box" weight="2">
                             <div class="oe_kanban_global_click">
@@ -89,6 +95,7 @@
                                     <div class="oe_kanban_content">
                                         <field name="service"/>
                                     </div>
+                                    <progressbar field="stage" colors='{"done": "success", "in_progress": "warning", "new": "danger"}' />
                                 </div>
                             </div>
                         </t>
@@ -96,6 +103,7 @@
                 </kanban>
             </field>
         </record>
+
 
         <record model="ir.ui.view" id="dental__care.search_patient">
             <field name="name">dental.patient.search.view</field>
@@ -124,6 +132,11 @@
             </field>
         </record>
 
+        <record model="ir.actions.act_window" id="dental__care.action_window_patient">
+            <field name="name">Dental Care Patient</field>
+            <field name="res_model">dental.patient</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
 
         <menuitem name="Patient" id="dental__care.menu3" parent="dental__care.menu_root" action="dental__care.action_window_patient"/>
     </data>

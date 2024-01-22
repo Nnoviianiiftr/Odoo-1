@@ -5,6 +5,12 @@
             <field name="model">dental.appointment</field>
             <field name="arch" type="xml">
                 <form>
+                <header>
+                    <button id="button_new" name="action_new" string="New" class="btn-primary" type="object"/>
+                    <button id="button_in_progress" name="action_in_progress" string="In Progress" class="btn-primary" type="object"/>
+                    <button id="button_done" name="action_done" string="Done" class="btn-primary" type="object"/>
+                    <field name="stage" widget="statusbar" statusbar_visible="new,in_progress,done"/>
+                </header>
                     <sheet>
                         <h1><field name="patient"></field></h1>
                         <group>
@@ -39,6 +45,48 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="dental__care.calendar_appointment">
+            <field name="name">Dental Care Calendar</field>
+            <field name="model">dental.appointment</field>
+            <field name="arch" type="xml">
+                <calendar string="Dental Care Appointment" date_start="date_start" date_stop="date_end" color="patient" mode="month" event_open_popup="true" quick_create="0">
+                    <field name="patient"/>
+                    <field name="doctor"/>
+                    <field name="service"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="dental__care.kanban_appointment">
+            <field name="name">Dental Care Kanban</field>
+            <field name="model">dental.appointment</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage">
+                    <templates>
+                        <t t-name="kanban-box" weight="2">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image" weight="1">
+                                    <field name="image" widget="image" class="oe_avatar"/>
+                                </div>
+                                <div class="oe_kanban_details" weight="1" style="margin-left: 15px;">
+                                    <strong class="oe_kanban_title">
+                                        <field name="patient"/>
+                                    </strong>
+                                    <div class="oe_kanban_content">
+                                        <field name="doctor"/>
+                                    </div>
+                                    <div class="oe_kanban_content">
+                                        <field name="service"/>
+                                    </div>
+                                    <progressbar field="stage" colors='{"done": "success", "in_progress": "warning", "new": "danger"}' />
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="dental__care.search_appointment">
             <field name="name">dental.appointment.search.view</field>
             <field name="model">dental.appointment</field>
@@ -59,6 +107,12 @@
                     </group>
                 </search>
             </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="dental__care.action_window_appointment">
+            <field name="name">Dental Care Appointment</field>
+            <field name="res_model">dental.appointment</field>
+            <field name="view_mode">tree,form,kanban,calendar</field>
         </record>
 
         <menuitem name="Appointment" id="dental__care.menu2" parent="dental__care.menu_root" action="dental__care.action_window_appointment"/>

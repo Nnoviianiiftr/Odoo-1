@@ -1,5 +1,7 @@
 <odoo>
     <data>
+
+    
         <record model="ir.ui.view" id="dental_doctor_form">
             <field name="name">dental.doctor.form</field>
             <field name="model">dental.doctor</field>
@@ -35,12 +37,12 @@
             <field name="arch" type="xml">
                 <kanban>
                     <templates>
-                        <t t-name="kanban-box">
+                        <t t-name="kanban-box" weight="2">
                             <div class="oe_kanban_global_click">
-                                <div class="o_kanban_image">
+                                <div class="o_kanban_image" weight="1">
                                     <field name="image" widget="image" class="oe_avatar"/>
                                 </div>
-                                <div class="oe_kanban_details">
+                                <div class="oe_kanban_details" weight="1" style="margin-left: 15px;">
                                     <strong class="oe_kanban_title">
                                         <field name="doctor"/>
                                     </strong>
@@ -68,6 +70,12 @@
                     </group>
                 </search>
             </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="dental__care.action_window_doctor">
+            <field name="name">Dental Care Doctor</field>
+            <field name="res_model">dental.doctor</field>
+            <field name="view_mode">tree,form,kanban,calendar</field>
         </record>
 
         <menuitem name="Dokter" id="dental__care.menu1" parent="dental__care.menu_root" action="dental__care.action_window_doctor"/>

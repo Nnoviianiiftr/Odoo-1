@@ -3,6 +3,7 @@ from odoo import models, fields
 class DentalPatient(models.Model):
     _name = 'dental.patient'
     _description = 'Dental Patient'
+    
 
     patient = fields.Many2one('res.partner', string="Patient", required=True)
     image = fields.Binary(string="image", attachment=True)
@@ -20,3 +21,17 @@ class DentalPatient(models.Model):
     weight = fields.Float("Weight")
     is_vaccinated = fields.Boolean("Is Vaccinated")
     vaccine_name = fields.Char("Vaccine Name")
+    stage = fields.Selection([
+        ('new', 'New'),
+        ('in_progress', 'In Progress'),
+        ('done', 'Done'),
+    ], default='new', string='Stage', required=True)
+
+    def action_new(self):
+        self.stage = 'new'
+
+    def action_in_progress(self):
+        self.stage = 'in_progress'
+
+    def action_done(self):
+        self.stage = 'done'
