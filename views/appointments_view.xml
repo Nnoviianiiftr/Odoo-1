@@ -37,7 +37,29 @@
                         <field name="date_end"/>
                     </tree>
             </field>
-            </record>
+        </record>
+
+        <record model="ir.ui.view" id="dental__care.search_appointment">
+            <field name="name">dental.appointment.search.view</field>
+            <field name="model">dental.appointment</field>
+            <field name="arch" type="xml">
+                <search string="Search Appointment">
+                    <field name="patient"/>
+                    <field name="doctor"/>
+                    <field name="service"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+
+                    <group string="Group By">
+                        <filter name="doctor" string="Doctor" context="{'group_by': 'doctor'}" />
+                        <filter name="patient" string="Patient" context="{'group_by': 'patient'}" />
+                        <filter name="service" string="Service" context="{'group_by': 'service'}" />
+                        <filter name="date_start" string="Today Start Date" domain="[('date_start', '>=', context_today().strftime('%m/%d/%Y 00:00:00')), ('date_start', '&lt;=', context_today().strftime('%m/%d/%Y 23:59:59'))]"/>
+                        <filter name="date_end" string="Today End Date" domain="[('date_end', '>=', context_today().strftime('%m/%d/%Y 00:00:00')), ('date_end', '&lt;=', context_today().strftime('%m/%d/%Y 23:59:59'))]"/>
+                    </group>
+                </search>
+            </field>
+        </record>
 
         <menuitem name="Appointment" id="dental__care.menu2" parent="dental__care.menu_root" action="dental__care.action_window_appointment"/>
     </data>

@@ -97,6 +97,34 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="dental__care.search_patient">
+            <field name="name">dental.patient.search.view</field>
+            <field name="model">dental.patient</field>
+            <field name="arch" type="xml">
+                <search string="Search Patient">
+                    <field name="patient"/>
+                    <field name="doctor"/>
+                    <field name="service"/>
+                    <field name="emergency_number"/>
+                    <field name="date_of_birth"/>
+                    <field name="blood_type"/>
+                    <field name="height"/>
+                    <field name="weight"/>
+                    <field name="is_vaccinated"/>
+                    <field name="vaccine_name"/>
+
+                    <group string="Group By">
+                        <filter name="doctor" string="Doctor" context="{'group_by': 'doctor'}" />
+                        <filter name="service" string="Service" context="{'group_by': 'service'}" />
+                        <filter name="blood_type" string="Blood Type" context="{'group_by': 'blood_type'}" />
+                        <filter name="is_vaccinated" string="Vaccinated" context="{'group_by': 'is_vaccinated'}" />
+                        <filter name="vaccine_name" string="Vaccine Name" context="{'group_by': 'vaccine_name'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
         <menuitem name="Patient" id="dental__care.menu3" parent="dental__care.menu_root" action="dental__care.action_window_patient"/>
     </data>
 </odoo>

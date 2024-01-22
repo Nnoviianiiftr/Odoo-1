@@ -55,6 +55,21 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="dental__care.search_doctor">
+            <field name="name">dental.doctor.search.view</field>
+            <field name="model">dental.doctor</field>
+            <field name="arch" type="xml">
+                <search string="Search Doctor">
+                    <field name="doctor"/>
+                    <field name="service_id"/>
+
+                    <group string="Group By">
+                        <filter name="service_id" string="Service" context="{'group_by': 'service_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
         <menuitem name="Dokter" id="dental__care.menu1" parent="dental__care.menu_root" action="dental__care.action_window_doctor"/>
     </data>
 </odoo>
