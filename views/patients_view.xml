@@ -6,9 +6,9 @@
             <field name="arch" type="xml">
                 <form>
                 <header>
-                    <button id="button_new" name="action_new" string="New" class="btn-primary" type="object"/>
-                    <button id="button_in_progress" name="action_in_progress" string="In Progress" class="btn-primary" type="object"/>
-                    <button id="button_done" name="action_done" string="Done" class="btn-primary" type="object"/>
+                    <button id="button_new" name="action_new" string="New" class="btn-primary" type="object" invisible="1"/>
+                    <button id="button_in_progress" name="action_in_progress" string="In Progress" class="btn-primary" type="object" invisible="1"/>
+                    <button id="button_done" name="action_done" string="Done" class="btn-primary" type="object" invisible="1"/>
                     <field name="stage" widget="statusbar" statusbar_visible="new,in_progress,done"/>
                 </header>
                     <sheet>
@@ -60,6 +60,7 @@
             <field name="model">dental.patient</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="image" widget="image" options="{'size': [100, 100]}"/>
                     <field name="patient"/>
                     <field name="doctor"/>
                     <field name="service"/>

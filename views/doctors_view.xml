@@ -1,14 +1,17 @@
 <odoo>
     <data>
-
-    
         <record model="ir.ui.view" id="dental_doctor_form">
             <field name="name">dental.doctor.form</field>
             <field name="model">dental.doctor</field>
             <field name="arch" type="xml">
                 <form>
+                <header>
+                    <button id="button_work" name="action_work" string="Work" class="btn-primary" type="object" />
+                    <button id="button_leave" name="action_leave" string="Leave" class="btn-primary" type="object" />
+                    <field name="stage" widget="statusbar" statusbar_visible="work,leave"/>
+                </header>
                     <sheet>   
-                   <field name="image" widget="image" class="oe_avatar"/>
+                    <field name="image" widget="image" class="oe_avatar"/>
                     <h1><field name="doctor"/></h1>
                         <group>
                             <field name="doctor"/>
@@ -25,8 +28,10 @@
             <field name="model">dental.doctor</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="doctor"/>
+                    <field name="image" widget="image" options="{'size': [100, 100]}"/>
+                    <field name="doctor" options="{'invisible': [('stage', '=', 'leave')]}"/>
                     <field name="service_id"/>
+                    <field name="stage"/>
                 </tree>
             </field>
         </record>
@@ -35,7 +40,7 @@
             <field name="name">Dental Care Kanban</field>
             <field name="model">dental.doctor</field>
             <field name="arch" type="xml">
-                <kanban>
+                <kanban default_group_by="stage">
                     <templates>
                         <t t-name="kanban-box" weight="2">
                             <div class="oe_kanban_global_click">
@@ -49,6 +54,7 @@
                                     <div class="oe_kanban_content">
                                         <field name="service_id"/>
                                     </div>
+                                    <progressbar field="stage" colors='{"work": "success", "leave": "danger"}' />
                                 </div>
                             </div>
                         </t>
